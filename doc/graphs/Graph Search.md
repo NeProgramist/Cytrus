@@ -68,3 +68,9 @@
 ![](https://upload.wikimedia.org/wikipedia/commons/a/a7/Dijkstra_graph14.PNG)
 
 Алгоритм закінчує роботу, коли викреслені всі вершини. Результат його роботи видно на останньому малюнку: найкоротший шлях від __1__-ї вершини до __2__-ї становить __7__, до __3__-ї — __9__, до __4__-ї — __20__, до __5__-ї — __20__, до __6__-ї — __11__ умовних одиниць.
+
+# Джерела
+* Wikipedia contributors. (2019, December 25). Graph traversal. In Wikipedia, The Free Encyclopedia. Retrieved 17:24, February 16, 2020, from https://en.wikipedia.org/w/index.php?title=Graph_traversal&oldid=932402755
+* Пошук по графу. (2019, серпень 27). Вікіпедія. Процитовано 17:25, лютий 16, 2020 з https://uk.wikipedia.org/w/index.php?title=%D0%9F%D0%BE%D1%88%D1%83%D0%BA_%D0%BF%D0%BE_%D0%B3%D1%80%D0%B0%D1%84%D1%83&oldid=25987759
+* Пошук у глибину. (2019, липень 6). Вікіпедія, . Процитовано 17:26, лютий 16, 2020 з https://uk.wikipedia.org/w/index.php?title=%D0%9F%D0%BE%D1%88%D1%83%D0%BA_%D1%83_%D0%B3%D0%BB%D0%B8%D0%B1%D0%B8%D0%BD%D1%83&oldid=25613582
+* Пошук у ширину. (2019, лютий 27). Вікіпедія, . Процитовано 17:26, лютий 16, 2020 з https://uk.wikipedia.org/w/index.php?title=%D0%9F%D0%BE%D1%88%D1%83%D0%BA_%D1%83_%D1%88%D0%B8%D1%80%D0%B8%D0%BD%D1%83&oldid=24580035

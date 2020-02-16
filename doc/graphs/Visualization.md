@@ -32,3 +32,12 @@
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Chvatal_Lombardi.svg/1024px-Chvatal_Lombardi.svg.png)
 ## Макет переважання
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Dominance_drawing.svg/1024px-Dominance_drawing.svg.png)
+# Джерела
+* Wikipedia contributors. (2020, February 6). Graph drawing. In Wikipedia, The Free Encyclopedia. Retrieved 17:31, February 16, 2020, from https://en.wikipedia.org/w/index.php?title=Graph_drawing&oldid=939481745
+* Wikipedia contributors. (2019, December 18). Force-directed graph drawing. In Wikipedia, The Free Encyclopedia. Retrieved 17:32, February 16, 2020, from https://en.wikipedia.org/w/index.php?title=Force-directed_graph_drawing&oldid=931360730
+* Wikipedia contributors. (2019, January 24). Spectral layout. In Wikipedia, The Free Encyclopedia. Retrieved 17:32, February 16, 2020, from https://en.wikipedia.org/w/index.php?title=Spectral_layout&oldid=879936336
+* Wikipedia contributors. (2019, December 6). Layered graph drawing. In Wikipedia, The Free Encyclopedia. Retrieved 17:32, February 16, 2020, from https://en.wikipedia.org/w/index.php?title=Layered_graph_drawing&oldid=929466990
+* Wikipedia contributors. (2019, December 22). Arc diagram. In Wikipedia, The Free Encyclopedia. Retrieved 17:32, February 16, 2020, from https://en.wikipedia.org/w/index.php?title=Arc_diagram&oldid=932012322
+* Wikipedia contributors. (2018, February 6). Circular layout. In Wikipedia, The Free Encyclopedia. Retrieved 17:33, February 16, 2020, from https://en.wikipedia.org/w/index.php?title=Circular_layout&oldid=824222672
+* Wikipedia contributors. (2017, June 22). Dominance drawing. In Wikipedia, The Free Encyclopedia. Retrieved 17:33, February 16, 2020, from https://en.wikipedia.org/w/index.php?title=Dominance_drawing&oldid=787016498
+* NetworkLayout.jl. JuliaGraphs in GitHub https://github.com/JuliaGraphs/NetworkLayout.jl
