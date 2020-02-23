@@ -1,3 +1,12 @@
+# [Rational Unified Process](https://github.com/NeProgramist/Cytrus/blob/master/doc/RUP.md)
+# Матеріяли
+* [Штучні нейронні мережі для обробки природних мов](https://github.com/NeProgramist/Cytrus/blob/master/doc/AI%20in%20NLP.md)
+* [NLP](https://github.com/NeProgramist/Cytrus/blob/master/doc/NLP.md)
+* [NLP implementations in other languages](https://github.com/NeProgramist/Cytrus/blob/master/doc/NLP%20implementations%20in%20other%20languages.md)
+* [Бібліотеки для синтаксичного аналізу тексту](https://github.com/NeProgramist/Cytrus/blob/master/doc/libraries-overview.md)
+* [Neo4j](https://github.com/NeProgramist/Cytrus/blob/master/doc/Neo4j.md)
+* [Stanford CoreNLP](https://github.com/NeProgramist/Cytrus/blob/master/doc/Stanford%20CoreNLP.md)
+* [Теорія графів](https://github.com/NeProgramist/Cytrus/tree/master/doc/graphs)
 # Порівняльна таблиця бібліотек та інструментів
 | Інструмент | Синтаксичний аналіз | Побудова графу | Контекстний аналіз | Пошук зв'язків | Підтримка української |
 |------------|---------------------|----------------|--------------------|----------------|-----------------------|
