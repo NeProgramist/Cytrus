@@ -17,21 +17,24 @@
 |1.3.2020 |1.1.6   |Додаткові посилання|[Ковалишин Олег](https://github.com/ALEGATOR1209)|
 |1.3.2020 |1.1.7   |RUP 5.3,6.1,6.2|[Сімонов Павло](https://github.com/DjBee0312)|
 |1.3.2020 |1.1.8   |edit RUP 3.2(Сайт)|[Засько Євгеній](https://github.com/NeProgramist)|
+|4.3.2020 |2.0.1   |Реструктуризація документації|[Ковалишин Олег](https://github.com/ALEGATOR1209)|
 
 ## Зміст
-1. [Вступ](https://github.com/NeProgramist/Cytrus/blob/master/doc/RUP.md#1-%D0%B2%D1%81%D1%82%D1%83%D0%BF)
-    1. [Ціль](https://github.com/NeProgramist/Cytrus/blob/master/doc/RUP.md#11-%D1%86%D1%96%D0%BB%D1%8C)
-    2. [Контекст](https://github.com/NeProgramist/Cytrus/blob/master/doc/RUP.md#12-%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BA%D1%81%D1%82)
-    3. [Визначення, акроніми та скорочення](https://github.com/NeProgramist/Cytrus/blob/master/doc/RUP.md#13-%D0%B2%D0%B8%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%BD%D1%8F-%D0%B0%D0%BA%D1%80%D0%BE%D0%BD%D1%96%D0%BC%D0%B8-%D1%82%D0%B0-%D1%81%D0%BA%D0%BE%D1%80%D0%BE%D1%87%D0%B5%D0%BD%D0%BD%D1%8F)
-    4. [Посилання](https://github.com/NeProgramist/Cytrus/blob/master/doc/RUP.md#14-%D0%BF%D0%BE%D1%81%D0%B8%D0%BB%D0%B0%D0%BD%D0%BD%D1%8F)
-2. [Короткий зміст](https://github.com/NeProgramist/Cytrus/blob/master/doc/RUP.md#2-%D0%BA%D0%BE%D1%80%D0%BE%D1%82%D0%BA%D0%B8%D0%B9-%D0%B7%D0%BC%D1%96%D1%81%D1%82)
-3. [Характеристика ділових процесів](https://github.com/NeProgramist/Cytrus/blob/master/doc/RUP.md#3-%D1%85%D0%B0%D1%80%D0%B0%D0%BA%D1%82%D0%B5%D1%80%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B0-%D0%B4%D1%96%D0%BB%D0%BE%D0%B2%D0%B8%D1%85-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%96%D0%B2)
-4. [Короткий огляд продукту](https://github.com/NeProgramist/Cytrus/blob/master/doc/RUP.md#4-%D0%BA%D0%BE%D1%80%D0%BE%D1%82%D0%BA%D0%B8%D0%B9-%D0%BE%D0%B3%D0%BB%D1%8F%D0%B4-%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D1%83)
-5. [Функціональність](https://github.com/NeProgramist/Cytrus/blob/master/doc/RUP.md#4-%D0%BA%D0%BE%D1%80%D0%BE%D1%82%D0%BA%D0%B8%D0%B9-%D0%BE%D0%B3%D0%BB%D1%8F%D0%B4-%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D1%83)
-6. [Практичність](https://github.com/NeProgramist/Cytrus/blob/master/doc/RUP.md#6-%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%BD%D1%96%D1%81%D1%82%D1%8C)
-7. [Надійність](https://github.com/NeProgramist/Cytrus/blob/master/doc/RUP.md#7-%D0%BD%D0%B0%D0%B4%D1%96%D0%B9%D0%BD%D1%96%D1%81%D1%82%D1%8C)
-8. [Продуктивність](https://github.com/NeProgramist/Cytrus/blob/master/doc/RUP.md#8-%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D1%96%D1%81%D1%82%D1%8C)
-9. [Експлуатаційна придатність](https://github.com/NeProgramist/Cytrus/blob/master/doc/RUP.md#9-%D0%B5%D0%BA%D1%81%D0%BF%D0%BB%D1%83%D0%B0%D1%82%D0%B0%D1%86%D1%96%D0%B9%D0%BD%D0%B0-%D0%BF%D1%80%D0%B8%D0%B4%D0%B0%D1%82%D0%BD%D1%96%D1%81%D1%82%D1%8C)
+1. [Вступ](#1-вступ)
+    <br>1.1. [Ціль](#11-ціль)
+    <br>1.2. [Контекст](#12-контекст)
+    <br>1.3. [Визначення, акроніми та скорочення](#13-визначення-акроніми-та-скорочення)
+    <br>1.4. [Посилання](#14-посилання)
+2. [Короткий зміст](#2-короткий-зміст)
+3. [Характеристика ділових процесів](#3-характеристика-ділових-процесів)
+    <br>3.1. [Призначення сервісу](#31-призначення-сервісу)
+    <br>3.2. [Сценарії обробки запиту від користувача](#32-сценарії-обробки-запиту-від-користувача)
+4. [Короткий огляд продукту](#4-короткий-огляд-продукту)
+5. [Функціональність](#5-функціональність)
+6. [Практичність](#6-практичність)
+7. [Надійність](#7-надійність)
+8. [Продуктивність](#8-продуктивність)
+9. [Експлуатаційна придатність](#9-експлуатаційна-придатність)
 
 ## 1. Вступ
 
@@ -49,13 +52,13 @@
     
 У цьому документі використовуються наступні визначення, акроніми та скорочення:
 
-**NLP** — [Natural Language Processing](https://github.com/NeProgramist/Cytrus/blob/master/doc/NLP.md) - загальний напрям інформатики, штучного інтелекту та математичної лінгвістики, що вивчає проблеми комп'ютерного аналізу та синтезу природної мови.
+**NLP** — [Natural Language Processing](../materials/nlp-theory/NLP.md) - загальний напрям інформатики, штучного інтелекту та математичної лінгвістики, що вивчає проблеми комп'ютерного аналізу та синтезу природної мови.
 
 **Бібліотека** — збірка об'єктів чи підпрограм для вирішення близьких за тематикою задач.
 
 **Слово** — це послідовність морфем, об'єднаних за граматичними правилами певної мови і співвідносних з певним елементом позамовної реальності.
 
-**[Граф](https://github.com/NeProgramist/Cytrus/blob/master/doc/graphs/Dictionary.md)** — це сукупність об'єктів із зв'язками між ними.
+**[Граф](../materials/nlp-theory/graphs/Dictionary.md)** — це сукупність об'єктів із зв'язками між ними.
 
 **Синтаксичний аналіз** — процес аналізу вхідної послідовності символів, з метою розбору граматичної структури згідно із заданою формальною граматикою.
 
@@ -71,13 +74,13 @@
 
 **Корпус** — набір текстів.
     
-### 4. Посилання
+### 1.4. Посилання
 
-* [NLP](https://github.com/NeProgramist/Cytrus/blob/master/doc/NLP.md)
-* [NLP implementations in other languages](https://github.com/NeProgramist/Cytrus/blob/master/doc/NLP%20implementations%20in%20other%20languages.md)
-* [Штучні нейронні мережі для обробки природних мов](https://github.com/NeProgramist/Cytrus/blob/master/doc/AI%20in%20NLP.md)
-* [Бібліотеки для синтаксичного аналізу тексту](https://github.com/NeProgramist/Cytrus/blob/master/doc/libraries-overview.md)
-* [Теорія графів](https://github.com/NeProgramist/Cytrus/tree/master/doc/graphs)
+* [NLP](../materials/nlp-theory/NLP.md)
+* [NLP implementations in other languages](../materials/nlp-practice/NLP%20implementations%20in%20other%20languages.md)
+* [Штучні нейронні мережі для обробки природних мов](../materials/nlp-theory/AI%20in%20NLP.md)
+* [Бібліотеки для синтаксичного аналізу тексту](../materials/nlp-practice/libraries-overview.md)
+* [Теорія графів](../materials/nlp-theory/graphs/Dictionary.md)
 
 ## 2. Короткий зміст
 
@@ -88,9 +91,9 @@ NLP "Cytrus" представляє собою програмне забезпе
 
 Сервіс призначений для надання користувачам доступу до інструментів україномовного NLP, зокрема пошуку зв'язків між сутностями в тексті. Результатом взаємодії із сервісом є відповідь у вигляді JSON-об'єкту з інформацією про знайдені логічні зв'язки у наданому тексті.
 
-### 3.2 Сценарій обробки запиту від користувача
+### 3.2. Сценарії обробки запиту від користувача
 
-#### Веб
+#### 3.2.1. Вебсайт
 1. **id**: id_0.1       
    **Назва**: Користувач переходить на Сайт(Систему)        
    **Учасники**: Користувач, Сайт       
