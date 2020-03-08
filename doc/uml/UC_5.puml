@@ -1,0 +1,26 @@
+@startuml
+
+left header
+<font color=000 size=16><b>ID:</b> UC_5
+<font color=000 size=16><b>Назва:</b> Обрати глибину вкладеності
+<font color=000 size=16><b>Учасники:</b> Привілейований Користувач(СПЗ), Система(CytrusAPI)
+<font color=000 size=16><b>Передумови:</b>
+<font color=000 size=16><b>Результат:</b> Привілейований Користувач обрав глубину вкладеності
+<font color=000 size=16><b>Виключні ситуації:</b>
+<font color=red size=16>
+
+<font color=000 size=16><b>Основний сценарій:</b>
+
+end header
+
+start
+: Вказує рівень вкладеності в запиті;
+
+: UC_4.2;
+note left
+<b> UC_5 є частиною UC_4.2
+end note
+
+stop;
+
+@enduml

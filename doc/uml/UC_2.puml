@@ -1,0 +1,27 @@
+@startuml
+
+left header
+<font color=000 size=16><b>ID:</b> UC_2
+<font color=000 size=16><b>Назва:</b> Прочитати документацію
+<font color=000 size=16><b>Учасники:</b> Користувач, Система(Web)
+<font color=000 size=16><b>Передумови:</b>
+<font color=000 size=16><b>Результат:</b> Користувач отримав доступ до документації
+<font color=000 size=16><b>Виключні ситуації:</b>
+<font color=red size=16>
+
+<font color=000 size=16><b>Основний сценарій:</b>
+
+end header
+
+|Користувач|
+start
+: Натискає на посилання
+"Документація";
+
+|Система(Web)|
+: Перенаправляє користувача
+ на сторінку GitHub/Cytrus;
+
+stop;
+
+@enduml
