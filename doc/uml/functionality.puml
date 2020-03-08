@@ -10,16 +10,13 @@ usecase "<b>UC_1</b>\nКупити привілейований\n доступ" 
 usecase "<b>UC_2</b>\nПрочитати документацію" as UC_2
 usecase "<b>UC_3</b>\nВідправити запит (Web)" as UC_3
 usecase "<b>UC_4</b>\nВідправити запит (API)" as UC_4
-usecase "<b>UC_5</b>\nОбрати формат\n виводу даних" as UC_5
-usecase "<b>UC_6</b>\nОбрати глибину\n вкладеності" as UC_6
+usecase "<b>UC_5</b>\nОбрати глибину\n вкладеності" as UC_5
 
 User --> UC_1
 User --> UC_2
 User --> UC_3
 User --> UC_4
-User --> UC_5
 
-superUser --> UC_4
+superUser --> User
 superUser --> UC_5
-superUser --> UC_6
 @enduml
