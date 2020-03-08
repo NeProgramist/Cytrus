@@ -152,8 +152,7 @@ NLP "Cytrus" представляє собою програмне забезпе
 "Cytrus" - це безкоштовний онлайн сервіс пошуку зв'язків в тексті на українській мові. Не залежить від реалізації, тобто просто по запиту буде віддавати дані користувачу в форматі JSON, без попередньої їх обробки. Сервіс працює на основі СУБД Neo4j та побудований на RESTful-архітектурі.
 
 ## 5. Функціональність
-
-![](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/NeProgramist/Cytrus/master/doc/uml/functionality.puml)
+![](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/NeProgramist/Cytrus/master/doc/uml/functionality.puml)
 
 Основні вимоги до функціональності, що пред'являються зацікавленими особами до предмету розробки, відносяться до наступних категорій:
 
