@@ -47,12 +47,4 @@ note left #ffaaaa
 end note
 stop;
 
-right footer
-
-
-Аналітичний портал. Модель прецедентів.
-НТУУ КПІ ім.І.Сікорського
-Киів-2020
-end footer
-
 @enduml
