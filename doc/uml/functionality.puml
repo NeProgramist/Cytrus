@@ -17,6 +17,6 @@ User --> UC_2
 User --> UC_3
 User --> UC_4
 
-superUser --> User
+superUser --|> User
 superUser --> UC_5
 @enduml
