@@ -102,61 +102,27 @@ NLP "Cytrus" представляє собою програмне забезпе
 ### 3.2. Сценарії обробки запиту від користувача
 
 #### 3.2.1. Вебсайт
-1. **id**: id_0.1       
-   **Назва**: Користувач переходить на Сайт(Систему)        
-   **Учасники**: Користувач, Сайт       
-   **Результат**: Користувач отримав загальну інформацію про ПЗ **Cytrus**       
-   
-2. **id**: id_1.1               
-   **Назва**: Користувач переходить по посиланню на сторінку Планів                
-   **Учасники**: Користувач, Сайт                       
-   **Результат**: Користувач отримав інформацію про різницю між стандартною та розширеною версіями, а також
-                  інформацію про ціни та як отримати доступ до платної версії         
 
-1. **id**: id_1.2               
-   **Назва**: Користувач переходить по посиланню на сторінку github-Cytrus               
-   **Учасники**: Користувач, Сайт                   
-   **Результат**: Користувач отримав інформацію про те, як користуватися ПЗ **Cytrus**  
-   
-   
-#### СПЗ(АРІ)
-1. **id**: id_0.1   
-   **Назва**: Користувач відправляє запит з текстом до Системи   
-   **Учасники**: Користувач, Система   
-   **Результат**: Система отримує дані   
-   
-2. **id**:id_1.1   
-   **Назва**: Система отримує текст для аналізу   
-   **Учасники**: Система   
-   **Результат**: Система має дані для подальшої обробки     
-   
-3. **id**:id_1.2                               
-   **Назва**: Системе виконує синтаксичний та логічний аналіз тексту через ___ API    
-   **Учасники**: Система, ___ API     
-   **Результат**: Виявлення сутностей в тексті     
-   
-
-4. **id**:id_1.3                                     
-   **Назва**: Система виконує пошук інформаціі про виявлені сутності в базі даних    
-   **Учасники**: Система    
-   **Результат**: Зв'язки між сутностями    
-   
-5. **id**:id_1.4       
-   **Назва**: Система формує звіт у форматі JSON    
-   **Учасники**: Система   
-   **Результат**: Звіт у форматі JSON   
-   
-6. **id**:id_2.1      
-   **Назва**: Система повертає звіт Користувачу   
-   **Учасники**: Система, Користувач   
-   **Результат**: Користувач отримує дані про зв'язки у форматі JSON  
-   
 ## 4. Короткий огляд продукту
+
+![](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/NeProgramist/Cytrus/master/doc/uml/UC_1.puml)
+
+![](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/NeProgramist/Cytrus/master/doc/uml/UC_2.puml)
+
+![](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/NeProgramist/Cytrus/master/doc/uml/UC_3.puml)
+
+![](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/NeProgramist/Cytrus/master/doc/uml/UC_4.1.puml)
+
+![](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/NeProgramist/Cytrus/master/doc/uml/UC_4.2.puml)
+
+![](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/NeProgramist/Cytrus/master/doc/uml/UC_5.puml)
+
+
 
 "Cytrus" - це безкоштовний онлайн сервіс пошуку зв'язків в тексті на українській мові. Не залежить від реалізації, тобто просто по запиту буде віддавати дані користувачу в форматі JSON, без попередньої їх обробки. Сервіс працює на основі СУБД Neo4j та побудований на RESTful-архітектурі.
 
 ## 5. Функціональність
-![](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/NeProgramist/Cytrus/master/doc/uml/functionality.puml)
+![](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/NeProgramist/Cytrus/master/doc/uml/UC_)
 
 Основні вимоги до функціональності, що пред'являються зацікавленими особами до предмету розробки, відносяться до наступних категорій:
 
