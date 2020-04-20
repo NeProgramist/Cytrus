@@ -5,7 +5,7 @@ left header
 <font color=000 size=16><b>Назва:</b> Відправити запит(API)
 <font color=000 size=16><b>Учасники:</b> Привілейований Користувач(СПЗ), Система(CytrusAPI)
 <font color=000 size=16><b>Передумови:</b>
-<font color=000 size=16><b>Результат:</b> Привілейований Користувач обрав вкладеність
+<font color=000 size=16><b>Результат:</b> Користувач отримав дані
 <font color=000 size=16><b>Виключні ситуації:</b>
 <font color=red size=16>EX_U3, EX_U4, EX_U6, EX_U7
 
@@ -54,6 +54,7 @@ end note
 
 
 |Привілейований Користувач|
+:Отримав дані;
 stop;
 
 
