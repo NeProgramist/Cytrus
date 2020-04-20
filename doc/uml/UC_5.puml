@@ -14,13 +14,16 @@ left header
 end header
 
 start
+|Привілейований Користувач|
 : Вказує рівень вкладеності в запиті;
 
+|Система(CytrusAPI)|
 : UC_4.2;
 note left
 <b> UC_5 є частиною UC_4.2
 end note
 
+|Привілейований Користувач|
 stop;
 
 @enduml
