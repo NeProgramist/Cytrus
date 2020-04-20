@@ -13,8 +13,8 @@ left header
 
 end header
 
-start
 |Привілейований Користувач|
+start
 : Вказує рівень вкладеності в запиті;
 
 |Система(CytrusAPI)|
