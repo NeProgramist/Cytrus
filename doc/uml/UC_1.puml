@@ -45,6 +45,8 @@ note left #ffaaaa
 <b> Можливо
 <b> EX_S1
 end note
+
+|Користувач|
 stop;
 
 @enduml
