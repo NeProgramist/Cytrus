@@ -47,6 +47,8 @@ note left #ffaaaa
 end note
 
 |Користувач|
+:          Отримує ключ 
+привілейованого доступу;
 stop;
 
 @enduml
