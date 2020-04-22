@@ -74,12 +74,14 @@ package API <<Frame>> {
 
         entity "Response.error" as ResponseError
         entity "Response.error.id" as ResponseErrorId
+        entity "Response.error.name" as ResponseErrorName
         entity "Response.error.message" as ResponseErrorMsg
         entity "Response.data" as ResponseData
 
         Response *-- ResponseData
         Response "1,1" -- "0,1" ResponseError
         ResponseError *-- ResponseErrorId
+        ResponseError *-- ResponseErrorName
         ResponseError *-- ResponseErrorMsg
     }
 }
