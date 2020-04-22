@@ -1,0 +1,86 @@
+@startuml
+title
+  <font size=22 color=black><b>Cytrus</b>
+  <font size=16 color=black>BE-модель
+end title
+
+right header
+<font color=fff size=16>Павлов підор
+<font color=000 size=16>ІП-84
+<font color=000 size=16>1 бригада
+end header
+
+package User {
+    entity "<b>User" as User
+    entity "User.id " as UserId
+    entity "User.APIkey " as UserKey
+    User *- UserId
+    UserKey -* User
+}
+
+package Graph <<Database>> {
+    entity Node
+    entity "Node.name " as nodeName
+    entity "Node.type " as nodeType
+    nodeName --* Node
+    nodeType --* Node
+
+    entity Connection
+    entity "Connection.type " as ConnectionType
+    ConnectionType --* Connection
+    Node "2,2" -l- "0,*" Connection
+
+    entity "<b>Graph" as Graph
+    Node "0,*" -- "1,1" Graph
+    Connection "0,*" -- "1,1" Graph
+}
+
+package API <<Frame>> {
+    package Request {
+    entity "<b>Request" as Request
+    entity "Request.sender " as RequestSender
+    entity "Request.options " as RequestOptions
+    entity "Request.id " as RequestId
+    entity "Request.date " as RequestDate
+
+    Request *-- RequestSender
+    Request *- RequestId
+    Request --- RequestOptions
+    Request *-- RequestDate
+
+    entity "Request.options.depth" as RequestOptionsDepth
+    entity "Request.options.query" as RequestOptionsQuery
+    entity "Request.options.APIkey" as RequestOptionsKey
+    entity "Request.options.type" as RequestOptionsType
+    entity "Request.options.data" as RequestOptionsData
+    entity "Request.options.answerFormat" as RequestOptionsAnswerFormat
+
+    RequestOptions *-- RequestOptionsAnswerFormat
+    RequestOptionsDepth -* RequestOptions
+    RequestOptions *-- RequestOptionsKey
+    RequestOptions *-- RequestOptionsQuery
+    RequestOptions *- RequestOptionsType
+    RequestOptions *-- RequestOptionsData
+    }
+
+    package Response {
+        entity "<b>Response" as Response
+        entity "Response.date " as ResponseDate
+        entity "Response.receiver " as ResponseReceiver
+
+        ResponseDate -* Response
+        Response *- ResponseReceiver
+
+        entity "Response.body.error" as ResponseBodyError
+        entity "Response.body.data" as ResponseBodyData
+
+        Response *-- ResponseBodyData
+        Response *-- ResponseBodyError
+    }
+
+    User "1,1"  ----- "0,*" Response
+    User "1,1" ----- "0,*" Request
+}
+
+Graph "1,1" --- "0,*" Request
+@enduml
