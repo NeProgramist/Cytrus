@@ -10,15 +10,12 @@ right header
 <font color=000 size=16>1 бригада
 end header
 
-package User {
     entity "<b>User" as User
     entity "User.id " as UserId
     entity "User.APIkey " as UserKey
     User *- UserId
     UserKey -* User
-}
 
-package Graph <<Database>> {
     entity Node
     entity "Node.name " as nodeName
     entity "Node.type " as nodeType
@@ -33,11 +30,12 @@ package Graph <<Database>> {
     entity "<b>Graph" as Graph
     Node "0,*" -- "1,1" Graph
     Connection "0,*" -- "1,1" Graph
-}
 
-package API <<Frame>> {
-    package Request {
-    entity "<b>Request" as Request
+    entity "<b>Request" as Request {
+
+
+
+    }
     entity "Request.sender " as RequestSender
     entity "Request.options " as RequestOptions
     entity "Request.id " as RequestId
@@ -61,19 +59,17 @@ package API <<Frame>> {
     RequestOptions *-- RequestOptionsQuery
     RequestOptions *- RequestOptionsType
     RequestOptions *-- RequestOptionsData
-    }
 
         entity "<b>Response" as Response {
             date: DATE
             __
-            receiver
+            receiver: User.Id
             __
-            error
+            error: Error.Id
     }
 
     User "1,1"  ----- "0,*" Response
     User "1,1" ----- "0,*" Request
-}
 
 Graph "1,1" --- "0,*" Request
 @enduml
