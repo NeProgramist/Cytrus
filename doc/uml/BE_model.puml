@@ -68,19 +68,24 @@ package API <<Frame>> {
         entity "Response.date " as ResponseDate
         entity "Response.receiver " as ResponseReceiver
 
+
         ResponseDate -* Response
         Response *- ResponseReceiver
 
-        entity "Response.body.error" as ResponseBodyError
-        entity "Response.body.data" as ResponseBodyData
+        entity "Response.error" as ResponseError
+        entity "Response.error.id" as ResponseErrorId
+        entity "Response.error.message" as ResponseErrorMsg
+        entity "Response.data" as ResponseData
 
-        Response *-- ResponseBodyData
-        Response *-- ResponseBodyError
+        Response *-- ResponseData
+        Response "1,1" -- "0,1" ResponseError
+        ResponseError *-- ResponseErrorId
+        ResponseError *-- ResponseErrorMsg
     }
-
-    User "1,1"  ----- "0,*" Response
-    User "1,1" ----- "0,*" Request
 }
 
+User "1,1"  ----- "0,*" Response
+User "1,1" ----- "0,*" Request
 Graph "1,1" --- "0,*" Request
+
 @enduml
