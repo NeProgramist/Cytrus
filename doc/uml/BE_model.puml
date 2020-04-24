@@ -10,82 +10,98 @@ right header
 <font color=000 size=16>1 бригада
 end header
 
+package UTA_API <<Cloud>> {
+    entity UTA #fabbff
+    entity UTARequest #fabbff
+    entity UTAResponse #fabbff
+    entity UTARequest.data #fabbff
+    entity UTAResponse.data #fabbff
+
+    UTA "1,1" -- "0,*" UTARequest #A719AC
+    UTA "1,1" -- "0,*" UTAResponse #A719AC
+
+    UTAResponse.data --* UTAResponse #A719AC
+    UTARequest.data --* UTARequest #A719AC
+}
+
 package User {
-    entity "<b>User" as User
-    entity "User.id " as UserId
-    entity "User.APIkey " as UserKey
-    User *- UserId
-    UserKey -* User
+    entity "<b>User" as User #eeeeff
+    entity "User.id " as UserId #eeeeff
+    entity "User.APIkey " as UserKey #eeeeff
+    User *- UserId #b01dac
+    UserKey -* User #b01dac
 }
 
 package Graph <<Database>> {
-    entity Node
-    entity "Node.name " as nodeName
-    entity "Node.type " as nodeType
-    nodeName --* Node
-    nodeType --* Node
+    entity Node #B3FF71
+    entity "Node.name " as nodeName #B3FF71
+    entity "Node.type " as nodeType #B3FF71
+    nodeName --* Node #367500
+    nodeType --* Node #367500
 
-    entity Connection
-    entity "Connection.type " as ConnectionType
-    ConnectionType --* Connection
-    Node "2,2" -l- "0,*" Connection
+    entity Connection #B3FF71
+    entity "Connection.type " as ConnectionType #B3FF71
+    ConnectionType --* Connection #367500
+    Node "2,2" -- "0,*" Connection #367500
 
-    entity "<b>Graph" as Graph
-    Node "0,*" -- "1,1" Graph
-    Connection "0,*" -- "1,1" Graph
+    entity "<b>Graph" as Graph #B3FF71
+    Node "0,*" -- "1,1" Graph #367500
+    Connection "0,*" -- "1,1" Graph #367500
 }
 
-package API <<Frame>> {
+package CytrusAPI <<Frame>> {
     package Request {
-    entity "<b>Request" as Request
-    entity "Request.sender " as RequestSender
-    entity "Request.options " as RequestOptions
-    entity "Request.id " as RequestId
-    entity "Request.date " as RequestDate
+    entity "<b>Request" as Request #fbff5c
+    entity "Request.sender " as RequestSender #fbff5c
+    entity "Request.options " as RequestOptions #fbff5c
+    entity "Request.id " as RequestId #fbff5c
+    entity "Request.date " as RequestDate #fbff5c
 
-    Request *-- RequestSender
-    Request *- RequestId
-    Request --- RequestOptions
-    Request *-- RequestDate
+    Request *-- RequestSender #806A0B
+    Request *- RequestId #806A0B
+    Request --- RequestOptions #806A0B
+    Request *-- RequestDate #806A0B
 
-    entity "Request.options.depth" as RequestOptionsDepth
-    entity "Request.options.query" as RequestOptionsQuery
-    entity "Request.options.APIkey" as RequestOptionsKey
-    entity "Request.options.data" as RequestOptionsData
-    entity "Request.options.answerFormat" as RequestOptionsAnswerFormat
+    entity "Request.options.depth" as RequestOptionsDepth #fbff5c
+    entity "Request.options.query" as RequestOptionsQuery #fbff5c
+    entity "Request.options.APIkey" as RequestOptionsKey #fbff5c
+    entity "Request.options.data" as RequestOptionsData #fbff5c
+    entity "Request.options.answerFormat" as RequestOptionsAnswerFormat #fbff5c
 
-    RequestOptions *-r- RequestOptionsAnswerFormat
-    RequestOptionsDepth -* RequestOptions
-    RequestOptions *-- RequestOptionsKey
-    RequestOptions *-- RequestOptionsQuery
-    RequestOptions *-- RequestOptionsData
+    RequestOptions *-r- RequestOptionsAnswerFormat #806A0B
+    RequestOptionsDepth -* RequestOptions #806A0B
+    RequestOptions *-- RequestOptionsKey #806A0B
+    RequestOptions *-- RequestOptionsQuery #806A0B
+    RequestOptions *-- RequestOptionsData #806A0B
     }
 
     package Response {
-        entity "<b>Response" as Response
-        entity "Response.date " as ResponseDate
-        entity "Response.receiver " as ResponseReceiver
+        entity "<b>Response" as Response #FFAD00
+        entity "Response.date " as ResponseDate #FFAD00
+        entity "Response.receiver " as ResponseReceiver #FFAD00
 
 
-        ResponseDate -* Response
-        Response *- ResponseReceiver
+        ResponseDate -* Response #806A0B
+        Response *- ResponseReceiver #806A0B
 
-        entity "Response.error" as ResponseError
-        entity "Response.error.id" as ResponseErrorId
-        entity "Response.error.name" as ResponseErrorName
-        entity "Response.error.message" as ResponseErrorMsg
-        entity "Response.data" as ResponseData
+        entity "Response.error" as ResponseError #FFAD00
+        entity "Response.error.id" as ResponseErrorId #FFAD00
+        entity "Response.error.name" as ResponseErrorName #FFAD00
+        entity "Response.error.message" as ResponseErrorMsg #FFAD00
+        entity "Response.data" as ResponseData #FFAD00
 
-        Response *-- ResponseData
-        Response "1,1" -- "0,1" ResponseError
-        ResponseError *-- ResponseErrorId
-        ResponseError *-- ResponseErrorName
-        ResponseError *-- ResponseErrorMsg
+        Response *-- ResponseData #806A0B
+        Response "1,1" -- "0,1" ResponseError #806A0B
+        ResponseError *-- ResponseErrorId #806A0B
+        ResponseError *-- ResponseErrorName #806A0B
+        ResponseError *-- ResponseErrorMsg #806A0B
     }
 }
 
 User "1,1"  ----- "0,*" Response
 User "1,1" ----- "0,*" Request
 Graph "1,1" --- "0,*" Request
+UTARequest "0,*" -- "1,1" Graph
+UTAResponse "0,*" -- "1,1" Graph
 
 @enduml
