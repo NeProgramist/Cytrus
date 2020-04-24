@@ -1,75 +1,352 @@
 @startuml
+allow_mixing
 title
   <font size=22 color=black><b>Cytrus</b>
-  <font size=16 color=black>BE-модель
+  <font size=16 color=black>ER-модель
 end title
 
 right header
-<font color=fff size=16>Павлов підор
+<font color=fff size=16>Павлов топ препод
 <font color=000 size=16>ІП-84
 <font color=000 size=16>1 бригада
 end header
 
-    entity "<b>User" as User
-    entity "User.id " as UserId
-    entity "User.APIkey " as UserKey
-    User *- UserId
-    UserKey -* User
-
-    entity Node
-    entity "Node.name " as nodeName
-    entity "Node.type " as nodeType
-    nodeName --* Node
-    nodeType --* Node
-
-    entity Connection
-    entity "Connection.type " as ConnectionType
-    ConnectionType --* Connection
-    Node "2,2" -l- "0,*" Connection
-
-    entity "<b>Graph" as Graph
-    Node "0,*" -- "1,1" Graph
-    Connection "0,*" -- "1,1" Graph
-
-    entity "<b>Request" as Request {
-
-
+package AccessPolicy {
+    entity "<b>RequestValidator " as RequestValidator #FFCF58{
 
     }
-    entity "Request.sender " as RequestSender
-    entity "Request.options " as RequestOptions
-    entity "Request.id " as RequestId
-    entity "Request.date " as RequestDate
 
-    Request *-- RequestSender
-    Request *- RequestId
-    Request --- RequestOptions
-    Request *-- RequestDate
+    entity "<b>Role " as Role #FFCF58{
+        name: Enum
+    }
 
-    entity "Request.options.depth" as RequestOptionsDepth
-    entity "Request.options.query" as RequestOptionsQuery
-    entity "Request.options.APIkey" as RequestOptionsKey
-    entity "Request.options.type" as RequestOptionsType
-    entity "Request.options.data" as RequestOptionsData
-    entity "Request.options.answerFormat" as RequestOptionsAnswerFormat
+    entity "<b>GraphOperator " as GraphOperator #FFCF58{
 
-    RequestOptions *-- RequestOptionsAnswerFormat
-    RequestOptionsDepth -* RequestOptions
-    RequestOptions *-- RequestOptionsKey
-    RequestOptions *-- RequestOptionsQuery
-    RequestOptions *- RequestOptionsType
-    RequestOptions *-- RequestOptionsData
+    }
 
-        entity "<b>Response" as Response {
-            date: DATE
+    object "User" as UserRole #white
+    object "ProUser" as ProUserRole #white
+}
+
+package CytrusAPI <<Frame>> {
+    entity "<b>Request" as Request #fbff5c{
+        sender: User.Id
+        __
+        id: Int
+        __
+        date: Date
+        __
+        options: RequestOptions
+    }
+
+    entity "<b>Request.options" as RequestOptions #fbff5c{
+        depth: Int
+        __
+        query: String
+        __
+        APIkey: String
+        __
+        data: String
+        __
+        answerFormat: answerFormat
+    }
+
+    entity "<b>answerFormat" as answerFormat #fbff5c{
+        name: Enum
+    }
+
+    object XML #white
+    object JSON #white
+    Request --> RequestOptions
+    RequestOptions --> answerFormat
+    answerFormat  <.r. XML : instanceOf
+    answerFormat <.l. JSON : instanceOf
+
+    entity "<b>Response" as Response #fbff5c{
+            date: Date
             __
             receiver: User.Id
             __
             error: Error.Id
     }
+}
 
-    User "1,1"  ----- "0,*" Response
-    User "1,1" ----- "0,*" Request
+package CytrusCore <<Database>> {
+      entity "<b>Node" as Node #B3FF71 {
+            name: String
+            __
+            type: String
+        }
 
-Graph "1,1" --- "0,*" Request
+        entity "<b>Connection" as Connection #B3FF71  {
+            node1: Node
+            __
+            node2: Node
+            __
+            type: String
+        }
+
+        entity "<b>Graph" as Graph #B3FF71 {
+            connection: Connection[]
+            __
+            node: Node[]
+        }
+}
+
+package UTA_API <<Cloud>> {
+    entity "<b>UTA" as Uta #fabbff {
+
+    }
+
+    entity "<b>UTA.request " as UtaRequest #fabbff{
+        data: String
+    }
+
+    entity "<b>UTA.response " as UtaResponse #fabbff {
+        data: JSON
+    }
+}
+
+
+
+    entity "<b>User" as User #eeeeff {
+        id: Int
+       __
+        APIkey: String
+    }
+     note right #ebac0c
+     <b> user.id - номер сесии
+     end note
+
+
+    Node "<font color=blue>2,2" -- "<font color=blue>0,*" Connection #367500
+    Node "<font color=blue>0,*" -- "<font color=blue>1,1" Graph #367500
+    Connection "<font color=blue>0,*" -- "<font color=blue>1,1" Graph #367500
+
+    User "<font color=blue>1,1" -r- "<font color=blue>0,*" Response #b01dac : "   "
+    User "<font color=blue>1,1" -r- "<font color=blue>0,*" Request #b01dac : "          "
+
+    Role <-- RequestValidator #C58C00
+    Role <.r. UserRole : instanceOf
+    Role <.. ProUserRole : instanceOf
+
+    Graph "<font color=blue>1,1" --- "<font color=blue>0,*" GraphOperator
+    GraphOperator "<font color=blue>0,*" -- "<font color=blue>1,1" RequestValidator #C58C00
+
+    Uta "<font color=blue>1,1" -- "<font color=blue>0,*" UtaRequest #A719AC
+    Uta "<font color=blue>1,1" -r- "<font color=blue>0,*" UtaResponse #A719AC : "             "
+
+    RequestValidator "<font color=blue>1,1" - "<font color=blue>0,*" UtaRequest
+    RequestValidator "<font color=blue>1,1" - "<font color=blue>0,*" UtaResponse : "                             "
+
+    RequestValidator "<font color=blue>1,1" ---- "<font color=blue>0,*" Request
+    RequestValidator "<font color=blue>1,1" --- "<font color=blue>0,*" Response
+@enduml
+
+
+@startuml
+	right header
+	<font size=24 color=black>Package: <b>ER_1.0
+
+	end header
+
+	title
+	<font size=18 color=black> Аналітичний портал
+	<font size=16 color=black>ER-модель
+
+	end title
+
+	entity Report {
+		id
+		title
+		uri
+		description
+		isTemplate
+		updatedAt
+		createdAt
+	}
+
+
+	entity User {
+		name
+		photo
+		email
+	}
+
+	entity Role {
+		name
+		description
+	}
+
+
+	entity Tag {
+		value
+	}
+
+
+	entity Category {
+		name
+		icon
+		description
+	}
+
+	Category "0,1" -o "0,*"Category
+
+	Report "0,*"--- "1,1" Category
+
+
+
+	entity Link
+
+	Report "1,1" -- "0,*" Link
+	Tag "1,1" -u- "0,*" Link
+
+	entity Access
+
+	Report "1,1"--"0,*" Access
+	User "1,1"--"0,*" Access
+	Role "1,1"--"0,*" Access
+
+	right footer
+
+	НТУУ КПІ ім.І.Сікорського
+	Киів-2020
+	end footer
+@enduml
+
+
+
+
+@startuml
+
+right header
+<font size=24 color=black>Package: <b>ERM_1.1
+
+end header
+
+title
+<font size=18 color=black> Аналітичний портал
+<font size=16 color=black>ER-модель
+
+
+end title
+
+package " User Profile Management" {
+	entity User #ffeeee {
+		name
+		photo
+		email
+	}
+}
+
+package Domain {
+	entity Report #ffeeee {
+		id
+		name
+		description
+		uri
+		options
+	}
+
+
+
+	package "Data Structurization"{
+		entity Tag #ffeeee {
+			name
+		}
+
+		entity Link	#eeeeff
+
+
+		Tag "1,1" <- "0,*" Link #blue
+		Link "0,*" --> "1,1" Report #blue
+
+
+		entity Category #eeffee {
+			name
+		}
+
+		Category "0.*" -o "0,1" Category
+
+		Category "0,1" <-r "0,*" Report #green
+	}
+}
+package "Global Settings" {
+	entity Variable #ffeeee {
+		name
+		value
+	}
+}
+package "Access Policy" {
+
+entity Role #yellow {
+	name
+}
+
+object author #white
+object collaborator #white
+object guest #white
+object administrator #white
+
+author ..> Role : instanceOf
+collaborator ..> Role : instanceOf
+guest .r.> Role : instanceOf
+administrator ..> Role : instanceOf
+
+entity Access #eeeeff
+
+User "1,1" <-d- "0,*" Access #blue
+Report "0,1" <-r- "0,*" Access #blue
+Access "0,*" -> "1,1" Role #blue
+
+
+entity ObjectType #yellow{
+	name
+}
+
+object report #white
+object user #white
+object role #white
+object category #white
+object tag #white
+
+report .u.> ObjectType :instanseOf
+user .u.> ObjectType :instanseOf
+role .u.> ObjectType :instanseOf
+category .u.> ObjectType :instanseOf
+tag .u.> ObjectType :instanseOf
+
+
+entity OperationType #yellow{
+	name
+}
+
+object create #white
+object read #white
+object update #white
+object delete #white
+
+create ..> OperationType : instanceOf
+read ..> OperationType : instanceOf
+update ..> OperationType : instanceOf
+delete ..> OperationType : instanceOf
+
+entity RequestType #eeeeff {
+	name
+}
+
+RequestType "0,*" -l-> "0,1" OperationType #blue
+RequestType "0,*" --> "0,1" ObjectType #blue
+
+entity Grant #eeeeff
+
+RequestType "1,1" <-l-- "0.*" Grant #blue
+Grant "0,*" -u-> "1,1" Role #blue
+}
+right footer
+
+НТУУ КПІ ім.І.Сікорського
+Киів-2020
+end footer
+
 @enduml
