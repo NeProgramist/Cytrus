@@ -51,15 +51,13 @@ package API <<Frame>> {
     entity "Request.options.depth" as RequestOptionsDepth
     entity "Request.options.query" as RequestOptionsQuery
     entity "Request.options.APIkey" as RequestOptionsKey
-    entity "Request.options.type" as RequestOptionsType
     entity "Request.options.data" as RequestOptionsData
     entity "Request.options.answerFormat" as RequestOptionsAnswerFormat
 
-    RequestOptions *-- RequestOptionsAnswerFormat
+    RequestOptions *-r- RequestOptionsAnswerFormat
     RequestOptionsDepth -* RequestOptions
     RequestOptions *-- RequestOptionsKey
     RequestOptions *-- RequestOptionsQuery
-    RequestOptions *- RequestOptionsType
     RequestOptions *-- RequestOptionsData
     }
 
