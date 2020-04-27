@@ -1,141 +1,170 @@
 @startuml
-allow_mixing
 title
-  <font size=16 color=black>ER-модель
+  <font size=16 color=black><b>ER-модель
 end title
 
-right header
-<font color=fff size=16>Павлов топ препод
-end header
+entity "<b>Node" as Node #B3FF71
 
-package AccessPolicy {
-    entity "<b>RequestValidator " as RequestValidator #FFCF58{
-
-    }
-
-    entity "<b>Role " as Role #FFCF58{
-        name: Enum
-    }
-
-    entity "<b>GraphOperator " as GraphOperator #FFCF58{
-
-    }
-
-    object "User" as UserRole #white
-    object "ProUser" as ProUserRole #white
+entity "<b>NodeProperty" as NodeProperty #B3FF71 {
+    node: Node
+    key
+    value
 }
 
-package CytrusAPI <<Frame>> {
-    entity "<b>Request" as Request #fbff5c{
-        sender: User.Id
-        __
-        id: Int
-        __
-        date: Date
-        __
-        options: RequestOptions
-    }
+entity "<b>Connection" as Connection #B3FF71
 
-    entity "<b>Request.options" as RequestOptions #fbff5c{
-        depth: Int
-        __
-        query: String
-        __
-        APIkey: String
-        __
-        data: String
-        __
-        answerFormat: answerFormat
-    }
-
-    entity "<b>answerFormat" as answerFormat #fbff5c{
-        name: Enum
-    }
-
-    object XML #white
-    object JSON #white
-    Request --> RequestOptions
-    RequestOptions --> answerFormat
-    answerFormat  <.r. XML : instanceOf
-    answerFormat <.l. JSON : instanceOf
-
-    entity "<b>Response" as Response #fbff5c{
-            date: Date
-            __
-            receiver: User.Id
-            __
-            error: Error.Id
-    }
+entity "<b>ConnectionProperty" as ConnectionProperty #B3FF71 {
+    connection: Connection
+    key
+    value
 }
 
-package CytrusCore <<Database>> {
-      entity "<b>Node" as Node #B3FF71 {
-            name: String
-            __
-            type: String
-        }
+NodeProperty "0,*" -- "1,1" Node
+Connection "1,1" -- "0,*" ConnectionProperty
 
-        entity "<b>Connection" as Connection #B3FF71  {
-            node1: Node
-            __
-            node2: Node
-            __
-            type: String
-        }
+Node "1,1" -- "0,*" Connection : SOURCE
+Node "1,1" -- "0,*" Connection : TARGET
 
-        entity "<b>Graph" as Graph #B3FF71 {
-            connection: Connection[]
-            __
-            node: Node[]
-        }
-}
-
-package UTA_API <<Cloud>> {
-    entity "<b>UTA" as Uta #fabbff {
-
-    }
-
-    entity "<b>UTA.request " as UtaRequest #fabbff{
-        data: String
-    }
-
-    entity "<b>UTA.response " as UtaResponse #fabbff {
-        data: JSON
-    }
-}
-
-
-
-    entity "<b>User" as User #eeeeff {
-        id: Int
-       __
-        APIkey: String
-    }
-     note right #ebac0c
-     <b> user.id - номер сесии
-     end note
-
-
-    Node "<font color=blue>2,2" -- "<font color=blue>0,*" Connection #367500
-    Node "<font color=blue>0,*" -- "<font color=blue>1,1" Graph #367500
-    Connection "<font color=blue>0,*" -- "<font color=blue>1,1" Graph #367500
-
-    User "<font color=blue>1,1" -r- "<font color=blue>0,*" Response #b01dac : "   "
-    User "<font color=blue>1,1" -r- "<font color=blue>0,*" Request #b01dac : "          "
-
-    Role <-- RequestValidator #C58C00
-    Role <.r. UserRole : instanceOf
-    Role <.. ProUserRole : instanceOf
-
-    Graph "<font color=blue>1,1" --- "<font color=blue>0,*" GraphOperator
-    GraphOperator "<font color=blue>0,*" -- "<font color=blue>1,1" RequestValidator #C58C00
-
-    Uta "<font color=blue>1,1" -- "<font color=blue>0,*" UtaRequest #A719AC
-    Uta "<font color=blue>1,1" -r- "<font color=blue>0,*" UtaResponse #A719AC : "             "
-
-    RequestValidator "<font color=blue>1,1" - "<font color=blue>0,*" UtaRequest
-    RequestValidator "<font color=blue>1,1" - "<font color=blue>0,*" UtaResponse : "                             "
-
-    RequestValidator "<font color=blue>1,1" ---- "<font color=blue>0,*" Request
-    RequestValidator "<font color=blue>1,1" --- "<font color=blue>0,*" Response
 @enduml
+
+'@startuml
+'allow_mixing
+'title
+'  <font size=16 color=black>ER-модель
+'end title
+'
+'right header
+'<font color=fff size=16>Павлов топ препод
+'end header
+'
+'package AccessPolicy {
+'    entity "<b>RequestValidator " as RequestValidator #FFCF58{
+'
+'    }
+'
+'    entity "<b>Role " as Role #FFCF58{
+'        name: Enum
+'    }
+'
+'    entity "<b>GraphOperator " as GraphOperator #FFCF58{
+'
+'    }
+'
+'    object "User" as UserRole #white
+'    object "ProUser" as ProUserRole #white
+'}
+'
+'package CytrusAPI <<Frame>> {
+'    entity "<b>Request" as Request #fbff5c{
+'        sender: User.Id
+'        __
+'        id: Int
+'        __
+'        date: Date
+'        __
+'        options: RequestOptions
+'    }
+'
+'    entity "<b>Request.options" as RequestOptions #fbff5c{
+'        depth: Int
+'        __
+'        query: String
+'        __
+'        APIkey: String
+'        __
+'        data: String
+'        __
+'        answerFormat: answerFormat
+'    }
+'
+'    entity "<b>answerFormat" as answerFormat #fbff5c{
+'        name: Enum
+'    }
+'
+'    object XML #white
+'    object JSON #white
+'    Request --> RequestOptions
+'    RequestOptions --> answerFormat
+'    answerFormat  <.r. XML : instanceOf
+'    answerFormat <.l. JSON : instanceOf
+'
+'    entity "<b>Response" as Response #fbff5c{
+'            date: Date
+'            __
+'            receiver: User.Id
+'            __
+'            error: Error.Id
+'    }
+'}
+'
+'package CytrusCore <<Database>> {
+'      entity "<b>Node" as Node #B3FF71 {
+'            name: String
+'            __
+'            type: String
+'        }
+'
+'        entity "<b>Connection" as Connection #B3FF71  {
+'            node1: Node
+'            __
+'            node2: Node
+'            __
+'            type: String
+'        }
+'
+'        entity "<b>Graph" as Graph #B3FF71 {
+'            connection: Connection[]
+'            __
+'            node: Node[]
+'        }
+'}
+'
+'package UTA_API <<Cloud>> {
+'    entity "<b>UTA" as Uta #fabbff {
+'
+'    }
+'
+'    entity "<b>UTA.request " as UtaRequest #fabbff{
+'        data: String
+'    }
+'
+'    entity "<b>UTA.response " as UtaResponse #fabbff {
+'        data: JSON
+'    }
+'}
+'
+'
+'
+'    entity "<b>User" as User #eeeeff {
+'        id: Int
+'       __
+'        APIkey: String
+'    }
+'     note right #ebac0c
+'     <b> user.id - номер сесии
+'     end note
+'
+'
+'    Node "<font color=blue>2,2" -- "<font color=blue>0,*" Connection #367500
+'    Node "<font color=blue>0,*" -- "<font color=blue>1,1" Graph #367500
+'    Connection "<font color=blue>0,*" -- "<font color=blue>1,1" Graph #367500
+'
+'    User "<font color=blue>1,1" -r- "<font color=blue>0,*" Response #b01dac : "   "
+'    User "<font color=blue>1,1" -r- "<font color=blue>0,*" Request #b01dac : "          "
+'
+'    Role <-- RequestValidator #C58C00
+'    Role <.r. UserRole : instanceOf
+'    Role <.. ProUserRole : instanceOf
+'
+'    Graph "<font color=blue>1,1" --- "<font color=blue>0,*" GraphOperator
+'    GraphOperator "<font color=blue>0,*" -- "<font color=blue>1,1" RequestValidator #C58C00
+'
+'    Uta "<font color=blue>1,1" -- "<font color=blue>0,*" UtaRequest #A719AC
+'    Uta "<font color=blue>1,1" -r- "<font color=blue>0,*" UtaResponse #A719AC : "             "
+'
+'    RequestValidator "<font color=blue>1,1" - "<font color=blue>0,*" UtaRequest
+'    RequestValidator "<font color=blue>1,1" - "<font color=blue>0,*" UtaResponse : "                             "
+'
+'    RequestValidator "<font color=blue>1,1" ---- "<font color=blue>0,*" Request
+'    RequestValidator "<font color=blue>1,1" --- "<font color=blue>0,*" Response
+'@enduml
