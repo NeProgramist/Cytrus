@@ -1,0 +1,34 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.3.72'
+}
+
+group 'org.agb'
+version '0.1'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "org.neo4j.driver:neo4j-java-driver:4.0.0"
+
+    //Exposed
+    def exposedVer = "0.23.1"
+    compile("org.jetbrains.exposed:exposed-core:$exposedVer")
+    compile("org.jetbrains.exposed:exposed-jdbc:$exposedVer")
+
+    //postgreSQL
+    //compile "com.impossibl.pgjdbc-ng:pgjdbc-ng:$LATEST"
+
+    //postgreDriver
+    compile("org.postgresql:postgresql:42.2.2")
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
