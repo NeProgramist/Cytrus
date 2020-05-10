@@ -61,11 +61,21 @@ class SqlConnector(user: String, password: String, driver: String, URL: String) 
                     }
                 }
 
-                node.properties.forEach { (k, v) ->
-                    NodeProperties.insert {
-                        it[nodeId] = node.id
-                        it[key] = k
-                        it[value] = v.toString()
+                node.properties.forEach { (prop, data) ->
+                    if (data is Iterable<*>) {
+                        data.forEach { itValue ->
+                            NodeProperties.insert {
+                                it[nodeId] = node.id
+                                it[key] = prop
+                                it[value] = itValue.toString()
+                            }
+                        }
+                    } else {
+                        NodeProperties.insert {
+                            it[nodeId] = node.id
+                            it[key] = prop
+                            it[value] = data.toString()
+                        }
                     }
                 }
             }
@@ -84,12 +94,21 @@ class SqlConnector(user: String, password: String, driver: String, URL: String) 
                     it[targetId] = connection.endNodeId
                 }
 
-                connection.properties.forEach { (k,v) ->
-                    ConnectionProperties.insert {
-                        it[connectionId] = connection.id
-                        it[key] = k
-                        it[value] = v.toString()
-                    }
+                connection.properties.forEach { (prop, data) ->
+                    if (data is Iterable<*>)
+                        data.forEach { itValue ->
+                            ConnectionProperties.insert {
+                                it[connectionId] = connection.id
+                                it[key] = prop
+                                it[value] = itValue.toString()
+                            }
+                        }
+                    else
+                        ConnectionProperties.insert {
+                            it[connectionId] = connection.id
+                            it[key] = prop
+                            it[value] = data.toString()
+                        }
                 }
 
                 ConnectionProperties.insert {
