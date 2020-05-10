@@ -1,11 +1,10 @@
 package connectors
 
-import connectors.PostgreConnector.Connections.references
 import models.*
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 
-class PostgreConnector(user: String, password: String, driver: String, URL: String) {
+class SqlConnector(user: String, password: String, driver: String, URL: String) {
     private val schema = Schema("cytrus")
     init {
         Database.connect(URL, driver, user, password)
@@ -46,6 +45,7 @@ class PostgreConnector(user: String, password: String, driver: String, URL: Stri
 
     fun saveNodes(nodes: List<NodeData>) {
         transaction {
+            addLogger(StdOutSqlLogger)
             SchemaUtils.setSchema(schema)
 
             for (node in nodes) {
@@ -74,6 +74,7 @@ class PostgreConnector(user: String, password: String, driver: String, URL: Stri
 
     fun saveRelationships(connections: List<RelationshipData>) {
         transaction {
+            addLogger(StdOutSqlLogger)
             SchemaUtils.setSchema(schema)
 
             for (connection in connections) {
