@@ -15,15 +15,15 @@ dependencies {
     implementation "org.neo4j.driver:neo4j-java-driver:4.0.0"
 
     //Exposed
-    def exposedVer = "0.23.1"
+    def exposedVer = "0.24.1"
     compile("org.jetbrains.exposed:exposed-core:$exposedVer")
     compile("org.jetbrains.exposed:exposed-jdbc:$exposedVer")
 
-    //postgreSQL
-    //compile "com.impossibl.pgjdbc-ng:pgjdbc-ng:$LATEST"
-
     //postgreDriver
     compile("org.postgresql:postgresql:42.2.2")
+
+    //mysqlDriver
+    compile("mysql:mysql-connector-java:5.1.48")
 }
 
 compileKotlin {
