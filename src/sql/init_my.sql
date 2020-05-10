@@ -1,6 +1,6 @@
-drop schema if exists cytrus cascade;
+drop schema if exists cytrus;
 create schema if not exists cytrus collate utf8mb4_0900_ai_ci;
-
+use cytrus;
 create table if not exists nodes
 (
 	id bigint not null
