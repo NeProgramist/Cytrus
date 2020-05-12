@@ -11,7 +11,7 @@ class SqlConnector(user: String, password: String, driver: String, URL: String) 
         transaction {
             addLogger(StdOutSqlLogger)
             with (SchemaUtils) {
-                dropSchema(schema, cascade = true)
+//                dropSchema(schema, cascade = true)
                 createSchema(schema)
                 setSchema(schema)
                 create(Nodes, NodeProperties, Connections, ConnectionProperties)
@@ -61,10 +61,12 @@ class SqlConnector(user: String, password: String, driver: String, URL: String) 
                     }
                 }
 
+                println("HERE: !")
                 node.properties.forEach { (prop, data) ->
                     if (data is Iterable<*>) {
                         data.forEach { itValue ->
                             NodeProperties.insert {
+                                println("HERE: ${it[nodeId]}")
                                 it[nodeId] = node.id
                                 it[key] = prop
                                 it[value] = itValue.toString()
@@ -116,6 +118,18 @@ class SqlConnector(user: String, password: String, driver: String, URL: String) 
                     it[key] = "TYPE"
                     it[value] = connection.type
                 }
+            }
+        }
+    }
+
+    fun select() {
+        transaction {
+            SchemaUtils.setSchema(schema)
+            NodeProperties.select {
+                NodeProperties.value eq "Keanu Reeves"
+            }.forEach {
+                println(NodeProperties.key)
+                println("${it[NodeProperties.key]} = ${it[NodeProperties.value]}")
             }
         }
     }

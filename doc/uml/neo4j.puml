@@ -1,0 +1,12 @@
+@startuml
+entity Graph
+entity Nodes
+entity Relationships
+entity Properties
+
+Graph *-- Nodes : records
+Graph *-- Relationships : records
+Nodes <|- Relationships : "   organize"
+Nodes *-- Properties : have
+Relationships *-- Properties : have
+@enduml
