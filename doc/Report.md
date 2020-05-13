@@ -111,7 +111,7 @@ MATCH (g)-[k]->(n:Movie {title:"The Matrix"}) RETURN n.released,g.born,k;
 Дуже часто в роботі з графовими базами даних треба користуватися можливістю пошуку подграфа.
 
 Наприклад:
-```
+```cypher
 MATCH (n: Movie { title: "The Matrix" })<-[k]-(g)-[l]->(s) return l,s,n,k,g;
 ```
 ![](img/neo4j-13.png)
@@ -147,7 +147,7 @@ RETURN path
 
 1.Пошук фільма за його назвою.
 
-```SQL
+```sql
 SELECT * FROM cytrus.node_properties
 WHERE value = 'The Matrix';
 ```
@@ -155,7 +155,7 @@ WHERE value = 'The Matrix';
 
 2.Пошук людей, що брали участь в заданому фільмі.
 
-```SQL
+```sql
 SELECT node_properties.value AS "Name", m.value AS "Relation", movie AS "Movie" FROM ( 
     SELECT node_properties.value AS movie, node_id, source_id, connection_properties.value FROM node_properties 
     JOIN connections ON target_id = node_id
